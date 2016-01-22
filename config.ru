@@ -1,2 +1,3 @@
-file tells host how to start the app
+require './main'
 
+run Sinatra::Application
