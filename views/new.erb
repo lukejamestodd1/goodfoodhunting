@@ -1,0 +1,18 @@
+<% @dish.errors.full_messages.each do |message| %>
+  <h2>ERROR: <%= message %> !</h2>
+  <% end %>
+
+<form action="/dishes" method="post">
+  <p>
+    <label for="">name</label>
+    <input type="text" name="name">
+  </p>
+
+  <p>
+    <label for="">image url</label>
+    <input type="text" name="image_url">
+  </p>
+
+  <button>win</button>
+</form>
+

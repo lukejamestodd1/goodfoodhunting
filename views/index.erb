@@ -1,0 +1,38 @@
+<ul>
+	<li><a href="/">all</a></li> 
+  <% @dish_types.each do |dish_type| %>
+  <li>
+    <a href="/?dish_type_id=<%= dish_type.id %>"><%= dish_type.name %></a>
+  </li>
+	<% end %>
+</ul>
+
+<form action="/session/new">
+  <button name="login">log in</button>
+</form>
+
+
+<% @dishes.each do |dish| %>
+  
+  <div class="card">
+    <div><img src="<%= dish.image_url %>" alt=""></div>
+
+    <a class="card" href="/dishes/<%= dish.id %>"><%= dish.name %></a>
+    <p class="card"><%=dish.dish_type.name if dish.dish_type %></p>
+
+    <p> <%= dish.likes.count %> </p>
+    <form class="card" action="/like/<%= dish.id %>" method="post">
+      <input type="hidden" name="<%= dish.id %>">
+      <button>Like</button>
+    </form>
+
+       <form class="card" action="/likes" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="dish_id" value="<%= dish.id %>">
+        <button>Unlike</button>
+      </form>
+
+  </div>
+    
+    
+<% end %>

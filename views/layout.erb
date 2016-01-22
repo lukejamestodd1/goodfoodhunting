@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello World</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+
+	<% if User.find_by(id: session[:user_id]) %>
+	<form action="/session" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<button>logout</button>
+	</form>
+	logged in as <%= current_user.email %>
+
+	<% end %>
+
+	<%= erb :banner %>
+
+	<form action="/dishes/new">
+  <button name="new">Add a new dish</button>
+	</form>
+
+  <%= yield %>
+
+</body>
