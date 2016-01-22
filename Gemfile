@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'activerecord'
 gem 'bcrypt'
-require 'pg'
+gem 'pg'
 
 group :development do
 	gem 'pry'
