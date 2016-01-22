@@ -2,13 +2,12 @@
 require 'sinatra'
 require 'pg'
 
-require 'pry'
-require 'sinatra/reloader'
 #for before deploy - only load these during dev mode
-# configure :development do |c|
-  
-#   c.also_reload './models/*'
-# end 
+configure :development do |c|
+  require 'pry'
+  require 'sinatra/reloader'
+  c.also_reload './models/*'
+end 
 
 require './db_config'
 require './models/dish'
