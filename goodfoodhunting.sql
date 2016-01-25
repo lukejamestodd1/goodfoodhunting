@@ -70,4 +70,32 @@ AUTHENTICATION
 MUST SAVE USER AFTER CREATING
 
 
-
+[27] pry(main)> Like.where(user_id: 1)
+D, [2016-01-22T11:11:32.110985 #55653] DEBUG -- :   Like Load (4.1ms)  SELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1  [["user_id", 1]]
+=> [#<Like:0x007f96f2d9e0a0 id: 1, user_id: 1, dish_id: 1>,
+ #<Like:0x007f96f2d9df38 id: 2, user_id: 1, dish_id: 4>,
+ #<Like:0x007f96f2d9ddd0 id: 3, user_id: 1, dish_id: 3>,
+ #<Like:0x007f96f2d9dc90 id: 4, user_id: 1, dish_id: 5>,
+ #<Like:0x007f96f2d9db00 id: 5, user_id: 1, dish_id: 4>]
+[28] pry(main)> User.all
+D, [2016-01-22T11:11:44.182191 #55653] DEBUG -- :   User Load (1.9ms)  SELECT "users".* FROM "users"
+=> [#<User:0x007f96f2ba40d8
+  id: 1,
+  email: "cake@pudding.com",
+  password_digest:
+   "$2a$10$pjDKdlNIwPNpdrwvL9Epn.jOzR0JHizLHLpE0r3N.HwnLeLY8FNVe">]
+[29] pry(main)> u1 = User.first
+D, [2016-01-22T11:11:56.917336 #55653] DEBUG -- :   User Load (1.6ms)  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+=> #<User:0x007f96f2a9fea8
+ id: 1,
+ email: "cake@pudding.com",
+ password_digest:
+  "$2a$10$pjDKdlNIwPNpdrwvL9Epn.jOzR0JHizLHLpE0r3N.HwnLeLY8FNVe">
+[30] pry(main)> u1.likes
+D, [2016-01-22T11:12:08.126871 #55653] DEBUG -- :   Like Load (0.4ms)  SELECT "likes".* FROM "likes" WHERE "likes"."user_id" = $1  [["user_id", 1]]
+=> [#<Like:0x007f96f2d5fc60 id: 1, user_id: 1, dish_id: 1>,
+ #<Like:0x007f96f2d5fad0 id: 2, user_id: 1, dish_id: 4>,
+ #<Like:0x007f96f2d5f8c8 id: 3, user_id: 1, dish_id: 3>,
+ #<Like:0x007f96f2d5f6c0 id: 4, user_id: 1, dish_id: 5>,
+ #<Like:0x007f96f2d5f3c8 id: 5, user_id: 1, dish_id: 4>]
+[31] pry(main)>
